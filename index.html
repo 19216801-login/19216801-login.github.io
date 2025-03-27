@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Router Login Information | Find Default Router Passwords</title>
+    <meta name="description" content="Find default router login information, IP addresses, usernames, and passwords for all popular router brands.">
+    <!-- Simple CSS reset and base styles -->
+    <style>
+        /* Base styles */
+        :root {
+            --primary-color: #2563eb;
+            --primary-dark: #1e40af;
+            --background: #ffffff;
+            --text: #333333;
+            --light-gray: #f3f4f6;
+            --gray: #e5e7eb;
+            --dark-gray: #9ca3af;
+            --border: #d1d5db;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--background);
+        }
+        
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul {
+            list-style-position: inside;
+        }
+        
+        /* Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: var(--background);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        footer {
+            background-color: var(--light-gray);
+            padding: 2rem 0;
+            margin-top: 4rem;
+            text-align: center;
+        }
+        
+        /* Hero section */
+        .hero {
+            background-color: var(--light-gray);
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto 2rem auto;
+        }
+        
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--border);
+            border-radius: 0.5rem;
+            font-size: 1rem;
+        }
+        
+        /* Feature sections */
+        .section {
+            padding: 4rem 0;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .section-description {
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Router brands grid */
+        .brand-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .brand-card {
+            background-color: var(--background);
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .brand-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .brand-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .brand-name {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .brand-info {
+            margin-top: 1rem;
+            font-size: 0.875rem;
+        }
+        
+        /* IP Address table */
+        .ip-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+        }
+        
+        .ip-table th, .ip-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .ip-table th {
+            background-color: var(--light-gray);
+        }
+        
+        /* Credentials table */
+        .credentials-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+        }
+        
+        .credentials-table th, .credentials-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .credentials-table th {
+            background-color: var(--light-gray);
+        }
+        
+        /* FAQ section */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            padding: 1rem;
+            background-color: var(--light-gray);
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-answer {
+            padding: 0 1rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        
+        .faq-answer.active {
+            padding: 1rem;
+            max-height: 500px;
+        }
+        
+        /* CTA section */
+        .cta-section {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .cta-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-description {
+            max-width: 800px;
+            margin: 0 auto 2rem auto;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background-color: var(--primary-color);
+            color: white;
+            border: 2px solid white;
+            border-radius: 0.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-dark);
+            text-decoration: none;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .mobile-menu {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: var(--background);
+                z-index: 200;
+                padding: 2rem;
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+            
+            .mobile-menu.active {
+                transform: translateX(0);
+            }
+            
+            .mobile-menu-close {
+                position: absolute;
+                top: 1rem;
+                right: 1rem;
+                background: none;
+                border: none;
+                font-size: 1.5rem;
+                cursor: pointer;
+            }
+            
+            .mobile-nav-links {
+                display: flex;
+                flex-direction: column;
+                gap: 1.5rem;
+                margin-top: 3rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 1.75rem;
+            }
+            
+            .brand-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">RouterLogin.info</a>
+                <nav class="nav-desktop">
+                    <ul class="nav-links">
+                        <li><a href="#router-brands">Router Brands</a></li>
+                        <li><a href="ip-addresses.html">IP Addresses</a></li>
+                        <li><a href="#default-credentials">Default Credentials</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </nav>
+                <button class="mobile-menu-toggle">☰</button>
+            </div>
+        </div>
+    </header>
+    
+    <div class="mobile-menu">
+        <button class="mobile-menu-close">✕</button>
+        <nav>
+            <ul class="mobile-nav-links">
+                <li><a href="#router-brands">Router Brands</a></li>
+                <li><a href="ip-addresses.html">IP Addresses</a></li>
+                <li><a href="#default-credentials">Default Credentials</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+        </nav>
+    </div>
+    
+    <section class="hero">
+        <div class="container">
+            <h1>Find Your Router Login Information</h1>
+            <p>Access your router's admin panel with the correct IP address, username, and password for all popular router brands.</p>
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Search for your router brand or model..." id="searchInput">
+            </div>
+        </div>
+    </section>
+    
+    <section class="section" id="router-brands">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Popular Router Brands</h2>
+                <p class="section-description">Find default login information for your specific router brand.</p>
+            </div>
+            <div class="brand-grid" id="routerBrandsGrid">
+                <!-- Router brands will be dynamically inserted here -->
+            </div>
+        </div>
+    </section>
+    
+    <section class="section" id="ip-addresses">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Common Router IP Addresses</h2>
+                <p class="section-description">Most routers use one of these IP addresses for the admin panel. <a href="ip-addresses.html">View detailed IP information</a>.</p>
+            </div>
+            <table class="ip-table">
+                <thead>
+                    <tr>
+                        <th>IP Address</th>
+                        <th>Description</th>
+                        <th>Common Brands</th>
+                    </tr>
+                </thead>
+                <tbody id="ipAddressesList">
+                    <!-- IP addresses will be dynamically inserted here -->
+                </tbody>
+            </table>
+        </div>
+    </section>
+    
+    <section class="section" id="default-credentials">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Default Login Credentials</h2>
+                <p class="section-description">Factory default usernames and passwords for popular router models.</p>
+            </div>
+            <table class="credentials-table">
+                <thead>
+                    <tr>
+                        <th>Router Brand</th>
+                        <th>Model</th>
+                        <th>IP Address</th>
+                        <th>Username</th>
+                        <th>Password</th>
+                    </tr>
+                </thead>
+                <tbody id="credentialsList">
+                    <!-- Default credentials will be dynamically inserted here -->
+                </tbody>
+            </table>
+        </div>
+    </section>
+    
+    <section class="section" id="faq">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-description">Get answers to common questions about router login and setup.</p>
+            </div>
+            <div class="faq-container" id="faqList">
+                <!-- FAQ items will be dynamically inserted here -->
+            </div>
+        </div>
+    </section>
+    
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="cta-title">Need Additional Help?</h2>
+            <p class="cta-description">Can't find your router's login information or having trouble accessing your admin panel? Check your router manual or visit the manufacturer's website for detailed instructions.</p>
+            <a href="#router-brands" class="btn">Browse Router Brands</a>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 RouterLogin.info - All router names and brands are property of their respective owners.</p>
+            <p>This site provides information about default router settings. Always change default passwords to enhance security.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Data for router brands
+        const routerBrands = [
+            {
+                id: "tp-link",
+                name: "TP-Link",
+                icon: "📡",
+                ipAddresses: ["192.168.1.1", "192.168.0.1"],
+                defaultUsername: "admin",
+                defaultPassword: "admin",
+                manualUrl: "https://www.tp-link.com/us/support/download/"
+            },
+            {
+                id: "netgear",
+                name: "Netgear",
+                icon: "📡",
+                ipAddresses: ["192.168.1.1", "192.168.0.1", "routerlogin.net"],
+                defaultUsername: "admin",
+                defaultPassword: "password",
+                manualUrl: "https://www.netgear.com/support/download/"
+            },
+            {
+                id: "d-link",
+                name: "D-Link",
+                icon: "📡",
+                ipAddresses: ["192.168.0.1"],
+                defaultUsername: "admin",
+                defaultPassword: "",
+                manualUrl: "https://support.dlink.com/"
+            },
+            {
+                id: "linksys",
+                name: "Linksys",
+                icon: "📡",
+                ipAddresses: ["192.168.1.1"],
+                defaultUsername: "admin",
+                defaultPassword: "admin",
+                manualUrl: "https://www.linksys.com/support/"
+            },
+            {
+                id: "asus",
+                name: "ASUS",
+                icon: "📡",
+                ipAddresses: ["192.168.1.1", "router.asus.com"],
+                defaultUsername: "admin",
+                defaultPassword: "admin",
+                manualUrl: "https://www.asus.com/support/"
+            },
+            {
+                id: "tenda",
+                name: "Tenda",
+                icon: "📡",
+                ipAddresses: ["192.168.0.1"],
+                defaultUsername: "admin",
+                defaultPassword: "admin"
+            },
+            {
+                id: "huawei",
+                name: "Huawei",
+                icon: "📡",
+                ipAddresses: ["192.168.3.1", "192.168.1.1"],
+                defaultUsername: "admin",
+                defaultPassword: "admin"
+            },
+            {
+                id: "xiaomi",
+                name: "Xiaomi",
+                icon: "📡",
+                ipAddresses: ["192.168.31.1"],
+                defaultUsername: "admin",
+                defaultPassword: "admin"
+            },
+            {
+                id: "belkin",
+                name: "Belkin",
+                icon: "📡",
+                ipAddresses: ["192.168.2.1"],
+                defaultUsername: "admin",
+                defaultPassword: "admin"
+            },
+            {
+                id: "apple",
+                name: "Apple",
+                icon: "📡",
+                ipAddresses: ["10.0.1.1"],
+                defaultUsername: "admin",
+                defaultPassword: "admin"
+            },
+            {
+                id: "zte",
+                name: "ZTE",
+                icon: "📡",
+                ipAddresses: ["192.168.1.1"],
+                defaultUsername: "admin",
+                defaultPassword: "admin"
+            },
+            {
+                id: "buffalo",
+                name: "Buffalo",
+                icon: "📡",
+                ipAddresses: ["192.168.11.1"],
+                defaultUsername: "admin",
+                defaultPassword: "password"
+            }
+        ];
+
+        // Data for router IP addresses
+        const routerIPs = [
+            {
+                id: "192-168-1-1",
+                address: "192.168.1.1",
+                title: "Most Common Default",
+                description: "This is the most common default IP address for home routers.",
+                brands: ["TP-Link", "Netgear", "Linksys", "ASUS"]
+            },
+            {
+                id: "192-168-0-1",
+                address: "192.168.0.1",
+                title: "Secondary Common Default",
+                description: "Another very common default IP address used by many manufacturers.",
+                brands: ["TP-Link", "D-Link", "Netgear", "Tenda"]
+            },
+            {
+                id: "192-168-2-1",
+                address: "192.168.2.1",
+                title: "Belkin Default",
+                description: "Commonly used by Belkin routers.",
+                brands: ["Belkin"]
+            },
+            {
+                id: "192-168-11-1",
+                address: "192.168.11.1",
+                title: "Buffalo Default",
+                description: "Default address for Buffalo routers.",
+                brands: ["Buffalo"]
+            },
+            {
+                id: "192-168-31-1",
+                address: "192.168.31.1",
+                title: "Xiaomi Default",
+                description: "Default address for Xiaomi routers.",
+                brands: ["Xiaomi"]
+            },
+            {
+                id: "10-0-1-1",
+                address: "10.0.1.1",
+                title: "Apple Default",
+                description: "Default address for Apple AirPort routers.",
+                brands: ["Apple"]
+            },
+            {
+                id: "router-addresses",
+                address: "router.asus.com / routerlogin.net",
+                title: "Domain Names",
+                description: "Some manufacturers provide domain names that redirect to your router.",
+                brands: ["ASUS", "Netgear"]
+            }
+        ];
+
+        // Data for default credentials
+        const defaultCredentials = [
+            {
+                id: 1,
+                brand: "TP-Link",
+                brandId: "tp-link",
+                model: "Most Models",
+                ipAddress: "192.168.1.1",
+                username: "admin",
+                password: "admin"
+            },
+            {
+                id: 2,
+                brand: "Netgear",
+                brandId: "netgear",
+                model: "Most Models",
+                ipAddress: "192.168.1.1",
+                username: "admin",
+                password: "password"
+            },
+            {
+                id: 3,
+                brand: "D-Link",
+                brandId: "d-link",
+                model: "Most Models",
+                ipAddress: "192.168.0.1",
+                username: "admin",
+                password: "(blank)"
+            },
+            {
+                id: 4,
+                brand: "Linksys",
+                brandId: "linksys",
+                model: "Most Models",
+                ipAddress: "192.168.1.1",
+                username: "admin",
+                password: "admin"
+            },
+            {
+                id: 5,
+                brand: "ASUS",
+                brandId: "asus",
+                model: "Most Models",
+                ipAddress: "192.168.1.1",
+                username: "admin",
+                password: "admin"
+            },
+            {
+                id: 6,
+                brand: "Huawei",
+                brandId: "huawei",
+                model: "HG8245H",
+                ipAddress: "192.168.100.1",
+                username: "telecomadmin",
+                password: "admintelecom"
+            },
+            {
+                id: 7,
+                brand: "Tenda",
+                brandId: "tenda",
+                model: "Most Models",
+                ipAddress: "192.168.0.1",
+                username: "admin",
+                password: "admin"
+            },
+            {
+                id: 8,
+                brand: "Xiaomi",
+                brandId: "xiaomi",
+                model: "Mi Router",
+                ipAddress: "192.168.31.1",
+                username: "admin",
+                password: "admin"
+            }
+        ];
+
+        // Data for FAQs
+        const faqs = [
+            {
+                question: "How do I find my router's IP address?",
+                answer: "You can find your router's IP address in several ways: \n\n" +
+                "• Check the router's label or manual\n" +
+                "• On Windows: Open Command Prompt and type \"ipconfig\", look for \"Default Gateway\"\n" +
+                "• On Mac: Go to System Preferences > Network > Advanced > TCP/IP, look for \"Router\"\n" +
+                "• On Android: Go to Settings > Wi-Fi > Tap your network > Advanced > IP settings\n" +
+                "• On iOS: Go to Settings > Wi-Fi > Tap (i) next to your network > Look for \"Router\""
+            },
+            {
+                question: "What if I can't access my router's admin panel?",
+                answer: "If you can't access your router's admin panel, try these steps: \n\n" +
+                "• Ensure you're connected to your router's network\n" +
+                "• Try different common IP addresses (192.168.1.1, 192.168.0.1, etc.)\n" +
+                "• Clear your browser cache or try a different browser\n" +
+                "• Try disabling your firewall temporarily\n" +
+                "• Reset your router to factory settings (press and hold the reset button)"
+            },
+            {
+                question: "I forgot my custom router password. What can I do?",
+                answer: "If you've forgotten your custom router password, you'll need to reset your router to factory settings: \n\n" +
+                "1. Locate the reset button on your router (usually a small hole on the back)\n" +
+                "2. With the router powered on, press and hold the reset button for 10-30 seconds\n" +
+                "3. Release the button when the router lights flash\n" +
+                "4. Wait for the router to restart (1-2 minutes)\n" +
+                "5. Try logging in with the default credentials (admin/admin for most routers)\n\n" +
+                "Note: Resetting your router will erase all custom settings."
+            },
+            {
+                question: "Why should I change my default router password?",
+                answer: "Changing your default router password is crucial for network security: \n\n" +
+                "• Default passwords are widely known and published online\n" +
+                "• Anyone within range of your network could access your router settings\n" +
+                "• Attackers could change your DNS settings, redirecting you to malicious sites\n" +
+                "• They could monitor your internet traffic or use your network for illegal activities\n\n" +
+                "After logging in to your router, look for \"Administration,\" \"System,\" or \"Password\" settings to change the default password."
+            },
+            {
+                question: "How often should I update my router's firmware?",
+                answer: "You should check for router firmware updates every 3-6 months. Router firmware updates provide: \n\n" +
+                "• Security patches for known vulnerabilities\n" +
+                "• Bug fixes for stability issues\n" +
+                "• Performance improvements\n" +
+                "• New features and functionality\n\n" +
+                "To update your router's firmware, log in to the admin panel and look for \"Update,\" \"Firmware,\" or \"Administration\" sections."
+            }
+        ];
+
+        // Utility function to format FAQ answers with proper formatting
+        function formatAnswer(text) {
+            return text.split('\n').map(line => {
+                // Check if line starts with bullet point or number
+                if (line.startsWith('•') || /^\d+\./.test(line)) {
+                    return `<p class="ml-4">${line}</p>`;
+                }
+                return line ? `<p class="mb-2">${line}</p>` : '<br>';
+            }).join('');
+        }
+
+        // Populate router brands grid
+        function populateRouterBrands() {
+            const routerBrandsGrid = document.getElementById('routerBrandsGrid');
+            routerBrandsGrid.innerHTML = '';
+            
+            routerBrands.forEach(brand => {
+                const brandCard = document.createElement('div');
+                brandCard.className = 'brand-card';
+                brandCard.setAttribute('data-brand-id', brand.id);
+                
+                brandCard.innerHTML = `
+                    <a href="router-brand.html?id=${brand.id}" style="text-decoration: none; color: inherit;">
+                        <div class="brand-icon">${brand.icon}</div>
+                        <h3 class="brand-name">${brand.name}</h3>
+                        <div class="brand-info">
+                            <p><strong>IP:</strong> ${brand.ipAddresses.join(', ')}</p>
+                            <p><strong>Username:</strong> ${brand.defaultUsername}</p>
+                            <p><strong>Password:</strong> ${brand.defaultPassword === '' ? '(blank)' : brand.defaultPassword}</p>
+                        </div>
+                    </a>
+                `;
+                
+                routerBrandsGrid.appendChild(brandCard);
+            });
+        }
+
+        // Populate IP addresses table
+        function populateIPAddresses() {
+            const ipAddressesList = document.getElementById('ipAddressesList');
+            ipAddressesList.innerHTML = '';
+            
+            routerIPs.forEach(ip => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td><strong>${ip.address}</strong></td>
+                    <td>${ip.description}</td>
+                    <td>${ip.brands.join(', ')}</td>
+                `;
+                
+                ipAddressesList.appendChild(row);
+            });
+        }
+
+        // Populate default credentials table
+        function populateDefaultCredentials() {
+            const credentialsList = document.getElementById('credentialsList');
+            credentialsList.innerHTML = '';
+            
+            defaultCredentials.forEach(cred => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${cred.brand}</td>
+                    <td>${cred.model}</td>
+                    <td>${cred.ipAddress}</td>
+                    <td>${cred.username}</td>
+                    <td>${cred.password === '' ? '(blank)' : cred.password}</td>
+                `;
+                
+                credentialsList.appendChild(row);
+            });
+        }
+
+        // Populate FAQ section
+        function populateFAQs() {
+            const faqList = document.getElementById('faqList');
+            faqList.innerHTML = '';
+            
+            faqs.forEach((faq, index) => {
+                const faqItem = document.createElement('div');
+                faqItem.className = 'faq-item';
+                
+                faqItem.innerHTML = `
+                    <div class="faq-question" data-faq-index="${index}">
+                        ${faq.question}
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer" id="faq-answer-${index}">
+                        ${formatAnswer(faq.answer)}
+                    </div>
+                `;
+                
+                faqList.appendChild(faqItem);
+            });
+            
+            // Add event listeners to FAQ questions
+            document.querySelectorAll('.faq-question').forEach(question => {
+                question.addEventListener('click', function() {
+                    const index = this.getAttribute('data-faq-index');
+                    const answer = document.getElementById(`faq-answer-${index}`);
+                    const toggle = this.querySelector('.faq-toggle');
+                    
+                    answer.classList.toggle('active');
+                    toggle.textContent = answer.classList.contains('active') ? '−' : '+';
+                });
+            });
+        }
+
+        // Handle search functionality
+        function setupSearch() {
+            const searchInput = document.getElementById('searchInput');
+            
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                
+                // Filter router brands
+                document.querySelectorAll('.brand-card').forEach(card => {
+                    const brandName = card.querySelector('.brand-name').textContent.toLowerCase();
+                    const brandInfo = card.querySelector('.brand-info').textContent.toLowerCase();
+                    
+                    if (brandName.includes(searchTerm) || brandInfo.includes(searchTerm)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+                
+                // Filter IP address table rows
+                document.querySelectorAll('#ipAddressesList tr').forEach(row => {
+                    const rowText = row.textContent.toLowerCase();
+                    
+                    if (rowText.includes(searchTerm)) {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
+                
+                // Filter credentials table rows
+                document.querySelectorAll('#credentialsList tr').forEach(row => {
+                    const rowText = row.textContent.toLowerCase();
+                    
+                    if (rowText.includes(searchTerm)) {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
+            });
+        }
+
+        // Handle mobile menu
+        function setupMobileMenu() {
+            const menuToggle = document.querySelector('.mobile-menu-toggle');
+            const menuClose = document.querySelector('.mobile-menu-close');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-links a');
+            
+            menuToggle.addEventListener('click', function() {
+                mobileMenu.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+            
+            menuClose.addEventListener('click', function() {
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+            
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            });
+        }
+
+        // Initialize all functions when the DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            populateRouterBrands();
+            populateIPAddresses();
+            populateDefaultCredentials();
+            populateFAQs();
+            setupSearch();
+            setupMobileMenu();
+        });
+    </script>
+</body>
+</html>

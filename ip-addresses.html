@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Common Router IP Addresses | RouterLogin.info</title>
+    <meta name="description" content="Find all common router IP addresses used by major router brands to access your admin panel.">
+    <!-- Simple CSS reset and base styles - same as index.html -->
+    <style>
+        /* Base styles */
+        :root {
+            --primary-color: #2563eb;
+            --primary-dark: #1e40af;
+            --background: #ffffff;
+            --text: #333333;
+            --light-gray: #f3f4f6;
+            --gray: #e5e7eb;
+            --dark-gray: #9ca3af;
+            --border: #d1d5db;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--background);
+        }
+        
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul {
+            list-style-position: inside;
+        }
+        
+        /* Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: var(--background);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        footer {
+            background-color: var(--light-gray);
+            padding: 2rem 0;
+            margin-top: 4rem;
+            text-align: center;
+        }
+        
+        /* Page header */
+        .page-header {
+            background-color: var(--light-gray);
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .page-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .page-description {
+            max-width: 800px;
+            margin: 0 auto;
+            color: #666;
+        }
+        
+        /* IP Addresses section */
+        .section {
+            padding: 4rem 0;
+        }
+        
+        .ip-card {
+            background-color: var(--background);
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .ip-address {
+            font-size: 1.75rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .ip-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .ip-description {
+            margin-bottom: 1rem;
+        }
+        
+        .ip-brands {
+            margin-top: 1.5rem;
+        }
+        
+        .brand-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+        
+        .brand-pill {
+            background-color: var(--light-gray);
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.875rem;
+        }
+        
+        /* How to find IP section */
+        .how-to-find {
+            background-color: var(--light-gray);
+            border-radius: 0.5rem;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .how-to-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .steps-list {
+            list-style-type: none;
+        }
+        
+        .step-item {
+            display: flex;
+            margin-bottom: 1.5rem;
+        }
+        
+        .step-number {
+            width: 30px;
+            height: 30px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+        
+        .step-content {
+            flex-grow: 1;
+        }
+        
+        .step-title {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Troubleshooting section */
+        .troubleshooting {
+            background-color: var(--light-gray);
+            border-radius: 0.5rem;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .troubleshooting-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .troubleshooting-list {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+        }
+        
+        .troubleshooting-item {
+            margin-bottom: 1rem;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .mobile-menu {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: var(--background);
+                z-index: 200;
+                padding: 2rem;
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+            
+            .mobile-menu.active {
+                transform: translateX(0);
+            }
+            
+            .mobile-menu-close {
+                position: absolute;
+                top: 1rem;
+                right: 1rem;
+                background: none;
+                border: none;
+                font-size: 1.5rem;
+                cursor: pointer;
+            }
+            
+            .mobile-nav-links {
+                display: flex;
+                flex-direction: column;
+                gap: 1.5rem;
+                margin-top: 3rem;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">RouterLogin.info</a>
+                <nav class="nav-desktop">
+                    <ul class="nav-links">
+                        <li><a href="index.html#router-brands">Router Brands</a></li>
+                        <li><a href="index.html#ip-addresses">IP Addresses</a></li>
+                        <li><a href="index.html#default-credentials">Default Credentials</a></li>
+                        <li><a href="index.html#faq">FAQ</a></li>
+                    </ul>
+                </nav>
+                <button class="mobile-menu-toggle">☰</button>
+            </div>
+        </div>
+    </header>
+    
+    <div class="mobile-menu">
+        <button class="mobile-menu-close">✕</button>
+        <nav>
+            <ul class="mobile-nav-links">
+                <li><a href="index.html#router-brands">Router Brands</a></li>
+                <li><a href="index.html#ip-addresses">IP Addresses</a></li>
+                <li><a href="index.html#default-credentials">Default Credentials</a></li>
+                <li><a href="index.html#faq">FAQ</a></li>
+            </ul>
+        </nav>
+    </div>
+    
+    <div class="page-header">
+        <div class="container">
+            <h1 class="page-title">Common Router IP Addresses</h1>
+            <p class="page-description">Find the default IP address for your router's admin panel. Most routers use one of these common IP addresses.</p>
+        </div>
+    </div>
+    
+    <section class="section">
+        <div class="container">
+            <div id="ip-cards-container">
+                <!-- IP addresses will be dynamically inserted here -->
+            </div>
+            
+            <div class="how-to-find">
+                <h2 class="how-to-title">How to Find Your Router's IP Address</h2>
+                <ul class="steps-list">
+                    <li class="step-item">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Check Your Router</h3>
+                            <p>Look for a sticker on the bottom or back of your router. Many manufacturers print the default IP address directly on the device.</p>
+                        </div>
+                    </li>
+                    <li class="step-item">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Windows: Command Prompt</h3>
+                            <p>Open Command Prompt and type <code>ipconfig</code>, then look for "Default Gateway". This is your router's IP address.</p>
+                        </div>
+                    </li>
+                    <li class="step-item">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Mac: System Preferences</h3>
+                            <p>Go to System Preferences > Network > Advanced > TCP/IP and look for "Router". This is your router's IP address.</p>
+                        </div>
+                    </li>
+                    <li class="step-item">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Android: Settings</h3>
+                            <p>Go to Settings > Wi-Fi > Tap your network > Advanced > IP settings and look for "Gateway". This is your router's IP address.</p>
+                        </div>
+                    </li>
+                    <li class="step-item">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h3 class="step-title">iOS: Settings</h3>
+                            <p>Go to Settings > Wi-Fi > Tap (i) next to your network and look for "Router". This is your router's IP address.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="troubleshooting">
+                <h2 class="troubleshooting-title">Troubleshooting IP Address Issues</h2>
+                <ul class="troubleshooting-list">
+                    <li class="troubleshooting-item">
+                        <strong>Can't access the admin panel?</strong> Make sure you're connected to your router's network via Wi-Fi or Ethernet cable.
+                    </li>
+                    <li class="troubleshooting-item">
+                        <strong>Address not working?</strong> Try the alternative IP addresses listed above for your router brand.
+                    </li>
+                    <li class="troubleshooting-item">
+                        <strong>Browser timeout?</strong> Clear your browser cache or try a different browser. Some routers work better with specific browsers.
+                    </li>
+                    <li class="troubleshooting-item">
+                        <strong>Still having trouble?</strong> Try a factory reset by pressing and holding the reset button on your router for 10-30 seconds (note: this will erase all custom settings).
+                    </li>
+                    <li class="troubleshooting-item">
+                        <strong>Alternative access methods:</strong> Some routers offer domain names like "routerlogin.net" or "router.asus.com" that redirect to your router's interface.
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 RouterLogin.info - All router names and brands are property of their respective owners.</p>
+            <p>This site provides information about default router settings. Always change default passwords to enhance security.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Data for router IP addresses - same as in index.html
+        const routerIPs = [
+            {
+                id: "192-168-1-1",
+                address: "192.168.1.1",
+                title: "Most Common Default",
+                description: "This is the most common default IP address for home routers.",
+                brands: ["TP-Link", "Netgear", "Linksys", "ASUS"]
+            },
+            {
+                id: "192-168-0-1",
+                address: "192.168.0.1",
+                title: "Secondary Common Default",
+                description: "Another very common default IP address used by many manufacturers.",
+                brands: ["TP-Link", "D-Link", "Netgear", "Tenda"]
+            },
+            {
+                id: "192-168-2-1",
+                address: "192.168.2.1",
+                title: "Belkin Default",
+                description: "Commonly used by Belkin routers.",
+                brands: ["Belkin"]
+            },
+            {
+                id: "192-168-11-1",
+                address: "192.168.11.1",
+                title: "Buffalo Default",
+                description: "Default address for Buffalo routers.",
+                brands: ["Buffalo"]
+            },
+            {
+                id: "192-168-31-1",
+                address: "192.168.31.1",
+                title: "Xiaomi Default",
+                description: "Default address for Xiaomi routers.",
+                brands: ["Xiaomi"]
+            },
+            {
+                id: "10-0-1-1",
+                address: "10.0.1.1",
+                title: "Apple Default",
+                description: "Default address for Apple AirPort routers.",
+                brands: ["Apple"]
+            },
+            {
+                id: "router-addresses",
+                address: "router.asus.com / routerlogin.net",
+                title: "Domain Names",
+                description: "Some manufacturers provide domain names that redirect to your router.",
+                brands: ["ASUS", "Netgear"]
+            }
+        ];
+
+        // Function to populate IP address cards
+        function populateIPAddresses() {
+            const ipCardsContainer = document.getElementById('ip-cards-container');
+            
+            routerIPs.forEach(ip => {
+                const ipCard = document.createElement('div');
+                ipCard.className = 'ip-card';
+                
+                // Create brand pills HTML
+                const brandPills = ip.brands.map(brand => 
+                    `<span class="brand-pill">${brand}</span>`
+                ).join('');
+                
+                ipCard.innerHTML = `
+                    <h2 class="ip-address">${ip.address}</h2>
+                    <h3 class="ip-title">${ip.title}</h3>
+                    <p class="ip-description">${ip.description}</p>
+                    <div class="ip-brands">
+                        <strong>Common Brands:</strong>
+                        <div class="brand-list">
+                            ${brandPills}
+                        </div>
+                    </div>
+                `;
+                
+                ipCardsContainer.appendChild(ipCard);
+            });
+        }
+
+        // Handle mobile menu
+        function setupMobileMenu() {
+            const menuToggle = document.querySelector('.mobile-menu-toggle');
+            const menuClose = document.querySelector('.mobile-menu-close');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-links a');
+            
+            menuToggle.addEventListener('click', function() {
+                mobileMenu.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+            
+            menuClose.addEventListener('click', function() {
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+            
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            });
+        }
+
+        // Initialize the page when the DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            populateIPAddresses();
+            setupMobileMenu();
+        });
+    </script>
+</body>
+</html>
